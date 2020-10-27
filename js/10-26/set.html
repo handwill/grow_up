@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let str = 'dadabinga'
+        // let newStr = [...new Set(str)].join('') // str先转化为set  去重之后转化为数组，数组再转化为字符串
+        // console.log(newStr); // dabing
+
+        // let map = new Map([
+        //     ['nihao','hhhh'],
+        //     ['lll','一啊啊']
+        // ]);
+        // let obj = {
+        //     name:'dabing'
+        // };
+        // map.set(obj,'name')
+        // console.log(map.entries());
+        // console.log([...map]);
+
+
+        //     function filterFuc(item){
+        //         return item >= 3;
+        //     }
+        //     let arr = [1,3,4,5,2,3,1];
+        //    let filterArr =  arr.filter(filterFuc);
+        //    console.log(filterArr);
+
+var name = 'window hdcms';
+var obj = {
+    name: 'obj 后盾人',
+    getName: function () {
+        var self = this;
+        return function () {
+            return this.name;
+        }
+    }
+}
+console.log(obj.getName()()); //返回window.name的值window hdcms
+    </script>
+</body>
+
+</html>

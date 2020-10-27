@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- <input type="text" name="age">
+    <span id="msg"></span> -->
+
+    <!-- <input type="text" name="password">
+    <input type="text" name="confirm_password">
+    <br/>
+    <span name="msg"></span> -->
+
+    <script>
+        // let str = "coderBing";
+        // console.log(str.toUpperCase());
+        // console.log(str.toLowerCase());
+
+        /*  Object.freeze */
+        // "use strict"
+        // const info = {
+        //     url: 'url',
+        //     port: '8080'
+        // }
+        // Object.freeze(info);
+        // info.url = "www.zai-art.com";
+        // console.log(info);
+
+        // let coder_bing 
+        // console.log(coder_bing);
+
+        /* 变量必须使用关键词声明，未声明的变量不允许赋值 */
+        // "use strict"
+        // url = "www.zai-art.com"
+
+        /* ==	强制类型转换比较  ===	不强制类型转换比较 */
+        // let a = 1,b = 2, c = '1';
+        // console.log(a == b);
+        // console.log(a == c);
+        // console.log(a === c);
+
+        // let span = document.querySelector("#msg");
+        // document.querySelector('[name="age"]').addEventListener('keyup',function(){
+        //     span.innerHTML = this.value > 90 ? '年龄不能大于90' : '';
+        // })
+
+        // function queryByName(name){
+        //     return document.querySelector(`[name='${name}']`)
+        // }
+        // let inputs = document.querySelectorAll("[name='password'],[name='confirm_password']");
+        // console.log(inputs);
+        // console.log(inputs instanceof Array); // inputs 不是数组 是 NodeList 类型
+        // console.log([...inputs]); // 展开运算符，转化为了数组
+        // [...inputs].map(item=>{
+        //  item.addEventListener('keyup',function(){
+        //     let msg = "";
+        //     let password = queryByName('password').value;
+        //     let confirmPassword = queryByName('confirm_password').value;
+        //     if (password != confirmPassword || password.length < 5) {
+        //         msg = "两次密码不一致或密码长度错误";
+        //     }
+        //     queryByName('msg').innerHTML = msg;
+        //  })
+        // })
+
+        // function createDiv(options = {}) {
+        //     let div = document.createElement('div');
+        //     div.style.width = options.width ?? '100px';
+        //     div.style.height = options.height ?? "100px";
+        //     div.style.backgroundColor = options.bgcolor ?? "red";
+        //     document.body.appendChild(div);
+        // }
+        // createDiv({width:'20px'})
+
+
+        /* 杨辉三角 */
+        // for (let i = 0; i < 5; i++) {
+        //     for (let j = 5 - i; j > 0; j--) {
+        //          document.write('^');
+        //     }
+        //     for (let m = 2*i-1; m > 0; m--) {
+        //         document.write('*');
+        //     }
+        //     document.write('<br/>')
+        // }
+
+        // let str = "coderBing";
+        // for (const iterator of str) {
+        //     console.log(iterator);
+        // }
+        // let array = ['code','bing'];
+        // for (const iterator of array) {
+        //     console.log(iterator);
+        // }
+        // const hd = ["hdcms", "houdunren"];
+        // for (const [key,value] of hd.entries()) {
+        //     console.log(key,value);
+        // }
+
+        // let hd = new String('str');
+        // console.log(typeof hd);
+        // let st = hd + '1'
+        // console.log(st);
+
+        // let lessons = [{
+        //     title: '媒体查询响应式布局'
+        // }, {
+        //     title: 'FLEX 弹性盒模型'
+        // }, {
+        //     title: 'GRID 栅格系统'
+        // }];
+        // function template(params) {
+        //     return `<ul>
+        //     ${lessons.map(item=>`<li>${item.title}</li>`).join('')}
+        //     </ul>`
+        // }
+        // document.body.innerHTML = template()
+
+        // let lessons = [{
+        //         title: "后盾人媒体查询响应式布局",
+        //         author: "后盾人向军"
+        //     },
+        //     {
+        //         title: "FLEX 弹性盒模型",
+        //         author: "后盾人"
+        //     },
+        //     {
+        //         title: "GRID 栅格系统后盾人教程",
+        //         author: "古老师"
+        //     }
+        // ];
+        // function  links(strings,...vars) {
+        //     return strings.map((str,key)=>{
+        //         return str + (vars[key] ? vars[key].replace('后盾人',"<a href='www.zai-ar.com'>后盾人</a>") : '')
+
+        //     }).join('')
+        // }
+        // function  template() {
+        //     return `<ul>
+        //     ${lessons.map(item=>{
+        //         return links `<li>${item.author}:${item.title}</li>`
+        //     }).join('')}
+        //     </ul>`
+        // }
+        // document.body.innerHTML = template();
+
+        // let str = "coderBing"
+        // console.log(str.slice(3));
+        // console.log(str.substr(3));
+        // console.log(str.substring(3));
+
+        // console.log(str.slice(3,5));
+        // console.log(str.substr(3,5));
+        // console.log(str.substring(3,5));
+
+        // let str = "houdunren.com";
+        // console.log(str.search("com"));
+        // console.log(str.indexOf("com"));
+        // console.log(str.startsWith('hou'));
+        // console.log(str.endsWith('cem'));
+
+        // let name = "hdcms";
+        // console.log(name.split(""));
+        // if ([]) {
+        //     console.log('111')
+        // }
+        // let b = {} == false
+        // console.log(b);
+        // console.log(new String('str') == 'str');
+
+        // let a = ['1','2','3'];
+        // let b = ['nihao1',...a];
+        // console.log(b);
+        // function hd(...params) {
+        //     console.log(params);
+        // }
+        // hd('1','2','3')
+        // function hd(site, ...args) {
+        //     console.log(site, args); //后盾人 (3) [1, 2, 3]
+        // }
+        // hd("后盾人", 1, 2, 3);
+        // let [a, ...b] = ['后盾人', 'houdunren', 'hdcms'];
+        // b.unshift('hhh');
+        // console.log(b);
+        // b.shift();
+        // console.log(b);
+
+        // let b = ['1','2','3','4','5'];
+        // b.fill('hhh',1,4);
+        // console.log(b);
+        // console.log([1, 2, 3, 4].fill("后盾人", 1, 2)); //[1, "后盾人", 3, 4]
+
+        // let user = [{
+        //     name: "hdcms"
+        // }, {
+        //     name: "后盾人"
+        // }];
+        // let cms = user;
+        // user.length = 0;
+        // console.log(user);
+        // console.log(cms);
+        
+    </script>
+</body>
+
+</html>
