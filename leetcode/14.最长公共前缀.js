@@ -26,7 +26,7 @@ var longestCommonPrefix = function (strs) {
     }, newStrs[0].charAt(index));
     if (singer) {
       sameCode += singer;
-    } else {
+    } else { 
       break;
     }
   }

@@ -26,14 +26,26 @@
 
 // console.log(a.b.getContext() === a.b); //  3301 true
 
+// const a = {
+//   b: 42,
+//   c: function () {
+//     console.log(this.b);
+//     return this.b;
+//   },
+// };
+
+// (a.c || [])(); //
+// (a.c)();       //
+// (1, a.c)();    //
+
 const a = {
-  b: 42,
-  c: function () {
-    console.log(this.b);
-    return this.b;
+  b: 66,
+  c: function (cb) {
+    setTimeout(() => {
+      return cb(this.b);
+    }, 500);
   },
 };
-
-(a.c || [])(); // 
-(a.c)();       // 
-(1, a.c)();    // 
+a.c(function (value) {
+  console.log(value); // 66
+});
