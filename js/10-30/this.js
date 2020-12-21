@@ -63,11 +63,90 @@
 
 // console.log(Object.prototype.toString.call(1));
 
+// function Person() {
 
-function Person() {
+// }
 
+// var person = new Person();
+// console.log(person.__proto__ == Person.prototype);
+// console.log(Object.getPrototypeOf(person.__proto__));
+
+// var foo = {
+//     bar: function () {
+//         return this;
+//     }
+// };
+
+// foo.bar(); // foo
+
+// // bar对应的Reference是：
+// var BarReference = {
+//     base: foo,
+//     propertyName: 'bar',
+//     strict: false
+// };
+// GetValue(fooReference) // 1;
+
+// function Foo(){
+//     // this.getName = function(){
+//     //   console.log(1);
+//     // };
+//     return this;
+//   }
+//   Foo.prototype.getName = function(){
+//     console.log(3);
+//   };
+//   function getName(){
+//     console.log(5);
+//   };
+//   new Foo().getName()
+
+//   let foo = new Foo()
+//   foo.getName()
+
+// console.log(1);
+// setTimeout(()=>{
+//   console.log(2);
+// })
+// console.log(3);
+// new Promise((resolve,reject)=>{
+//   console.log(4);
+//   resolve()
+// }).then(res=>{
+//   console.log(5);
+// },()=>{
+//   console.log(6);
+// })
+// console.log(7);
+
+// const a = [1,2,1,1,1,1]
+
+// a.reverse();
+
+// for (let index = 0; index < 5; index++) {
+
+//   for (let j = 0; j < index ;j++) {
+//     a[index] = a[j] + a[index]
+
+//   }
+
+// }
+// console.log(a);
+
+function output(arr, max) {
+  let map = new Map();
+  let newArr = []
+  arr.forEach((element) => {
+    if (map.has(element)) {
+      map.set(element, map.get(element) + 1);
+    }else{
+      map.set(element, 1);
+    }
+    if(map.get(element) <= max){
+      newArr.push(element);
+    }
+  });
+  console.log(newArr);
 }
 
-var person = new Person();
-console.log(person.__proto__ == Person.prototype);
-console.log(Object.getPrototypeOf(person.__proto__));
+output([20, 37, 20, 20, 21], 2);
