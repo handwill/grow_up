@@ -32,15 +32,20 @@ function wx() {
      * @param {*} callback
      */
     off(eventName, callback) {
-      const callBackArray = this.handlerFunc[eventName];
-      if (callBackArray && callBackArray.length) {
-        for (let index = 0; index < callBackArray.length; index++) {
-          const element = callBackArray[index];
-          if (element === callback) {
-            callBackArray.splice(index, 1); // 将回调事件删除
-          }
-        }
-      }
+      if (this.handlerFunc[eventName])
+        this.handlerFunc[eventName] = this.handlerFunc[eventName].filter(
+          (cb) => cb !== callback
+        );
+
+      //   const callBackArray = this.handlerFunc[eventName];
+      //   if (callBackArray && callBackArray.length) {
+      //     for (let index = 0; index < callBackArray.length; index++) {
+      //       const element = callBackArray[index];
+      //       if (element === callback) {
+      //         callBackArray.splice(index, 1); // 将回调事件删除
+      //       }
+      //     }
+      //   }
     }
     /**
      * 取消所有注册的事件
@@ -53,6 +58,14 @@ function wx() {
       }
     }
 
+    emit(eventName, data) {
+      if (this.handlerFunc[eventName]) {
+        this.handlerFunc[eventName].forEach((fn) => {
+          fn(data);
+        });
+      }
+    }
+
     sendMessage() {
       console.log("消息发送成功啦");
       this.onReceiveMessage();
@@ -60,9 +73,7 @@ function wx() {
 
     onReceiveMessage() {
       if (this.handlerFunc.newMessage) {
-        this.handlerFunc.newMessage.forEach((element) => {
-          element("onReceiveMessage");
-        });
+        this.emit(this.eventTypes.RECEIVE_NEW_MESSAGE, "新的消息啊啊啊");
       }
     }
   }
