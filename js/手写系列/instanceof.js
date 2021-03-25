@@ -39,3 +39,16 @@ function myInstanceOf2(left, right) {
     proto = Object.getPrototypeOf(proto);
   }
 }
+
+function myInstanceOf3(left, right) {
+  if (typeof left !== "object" || left === null) return false;
+  let proto = Object.getPrototypeOf(left);
+  while (proto) {
+    if (proto == right.prototype) return true;
+    proto = Object.getPrototypeOf(proto);
+  }
+
+  return false;
+}
+console.log(Student.prototype);
+console.log(myInstanceOf3(zhangsan, Student));
