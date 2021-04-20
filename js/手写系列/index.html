@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="btn"></div>
     <script src="./debounce.js"></script>
+    <script src="./throttle.js"></script>
     <script>
-        let btn = document.querySelector(".btn")
-        console.log(btn);
-        let debounceF = debounce(() => {
-            console.log('123');
-        }, 500, true)
-        btn.addEventListener('click', debounceF)
+      let btn = document.querySelector(".btn");
+      console.log(btn);
+      //   let debounceF = debounce1(
+      //     function (e) {
+      //       console.log(this);
+      //       console.log(e);
+      //     },
+      //     1000,
+      //     true
+      //   );
+      //   btn.addEventListener("click", debounceF);
+
+      let throttleF = throttle(function (e) {
+        console.log(e);
+        console.log(this);
+      }, 1000);
+      btn.addEventListener("click", throttleF);
     </script>
     <style>
-        .btn {
-            /* width: 100px;
+      .btn {
+        /* width: 100px;
             height: 50px;
             background-color: rebeccapurple; */
-            width: 0;
-            height: 0;
-            border-width: 40px;
-            border-style: solid;
-            border-color: saddlebrown bisque red forestgreen;
-        }
+        width: 0;
+        height: 0;
+        border-width: 40px;
+        border-style: solid;
+        border-color: saddlebrown bisque red forestgreen;
+      }
     </style>
-</body>
-
+  </body>
 </html>

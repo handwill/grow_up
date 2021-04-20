@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      你好{{b.m.n}}
+      <br />
+      <input type="text" v-model="b.m.n" />
+    </div>
+    <button onclick="add()">按我加1</button>
+
+    <script src="/xuni/bundle.js"></script>
+    <script>
+      //   const data = {};
+      //   let name = "zwb";
+
+      //   Object.defineProperty(data, "name", {
+      //     get: function () {
+      //       console.log("触发了 get");
+      //       return name;
+      //     },
+      //     set: function (newVal) {
+      //       console.log("触发了 set");
+      //       name = newVal;
+      //     },
+      //   });
+
+      //   data.name = "newName";
+      //   console.log(data);
+
+      function updateView() {
+        console.log("视图更新啦");
+      }
+
+      function defineReactive(targe, key, value) {
+        observe(value);
+        Object.defineProperty(targe, key, {
+          get: function () {
+            console.log("get");
+            return value;
+          },
+          set: function (newValue) {
+            if (value != newValue) {
+              console.log("set");
+              value = newValue;
+              updateView();
+              observe(newValue);
+            }
+          },
+        });
+      }
+
+      function observe(data) {
+        if (typeof data != "object" || data === null) {
+          return data;
+        }
+
+        for (const key in data) {
+          if (Object.hasOwnProperty.call(data, key)) {
+            defineReactive(data, key, data[key]);
+          }
+        }
+      }
+
+      const data = {
+        name: "tony",
+        age: 24,
+        info:{
+            num:20,
+        }
+      };
+
+      observe(data);
+
+      data.name = "lisi";
+      console.log(data.name);
+
+      data.info.num = 22;
+    </script>
+  </body>
+</html>

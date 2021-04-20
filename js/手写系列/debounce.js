@@ -1,3 +1,4 @@
+
 // 第四版
 function debounce(func, wait, immediate) {
   var timeout;
@@ -20,4 +21,28 @@ function debounce(func, wait, immediate) {
       }, wait);
     }
   };
+}
+
+// 第一版本
+function debounce1(func, wait, immediate) {
+  let timer;
+  return function () {
+    let context = this;
+    let args = arguments;
+    if (timer) clearTimeout(timer);
+    if (immediate) {
+      let callNow = !timer;
+      timer = setTimeout(() => {
+        timer = null;
+      }, wait);
+      if (callNow) {
+        func.apply(context, args);
+      }
+    } else {
+      timer = setTimeout(() => {
+        func.apply(context, args);
+      }, wait);
+    }
+
+  }
 }
