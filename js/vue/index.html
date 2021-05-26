@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <script>
+      const user = {
+        name: "mojap",
+        age: 10,
+      };
+
+      const proxyUser = new Proxy(user, {
+        get(target, prop) {
+          console.log("get 调用了");
+          return Reflect.get(target, prop);
+        },
+        set() {
+          console.log("set 调用了");
+        },
+      });
+      console.log("111");
+      console.log(proxyUser.name);
+    </script>
+  </body>
 </html>
