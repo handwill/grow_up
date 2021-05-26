@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const oldArrProperty = Array.prototype;
+        const arrProto = Object.create(oldArrProperty);
+        ['push', 'pop', 'shift', 'unshift', 'splice'].forEach(key => {
+            arrProto[key] = function () {
+                oldArrProperty[key].call(this, ...arguments)
+                updateView()
+            }
+        });
+
+        function updateView() {
+            console.log('视图更新');
+        }
+
+        function defineReactive(target, key, value) {
+            observe(value)
+            Object.defineProperty(target, key, {
+                get() {
+                    console.log('get 触发了 ', key);
+                    return value;
+                },
+                set(newValue) {
+                    console.log('set 触发了', newValue);
+                    if (newValue !== value) {
+                        observe(newValue)
+                        value = newValue
+                        updateView()
+                    }
+                }
+
+            })
+        }
+
+        function observe(target) {
+            if (typeof target !== 'object' || target === null) {
+                return
+            }
+
+            if (Array.isArray(target)) {
+                target.__proto__ = arrProto
+            }
+            for (const key in target) {
+                if (Object.hasOwnProperty.call(target, key)) {
+                    defineReactive(target, key, target[key])
+                }
+            }
+        }
+
+        const data = {
+            a: 1,
+            b: '22',
+            ss: [{
+                w: 123
+            }, 3, 4]
+        }
+
+        observe(data);
+        // data.a = {
+        //     c: 23
+        // }
+        // console.log(data.a.c);
+
+        // data.ss.push(1)
+        data.ss[0].w = 222
+    </script>
+</body>
+
+</html>

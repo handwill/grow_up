@@ -8,26 +8,20 @@
 
   <body>
     <div class="btn"></div>
-    <script src="./debounce.js"></script>
-    <script src="./throttle.js"></script>
+    <script src="./防抖节流/debounce.js"></script>
+    <script src="./防抖节流/throttle.js"></script>
     <script>
-      let btn = document.querySelector(".btn");
-      console.log(btn);
-      //   let debounceF = debounce1(
-      //     function (e) {
-      //       console.log(this);
-      //       console.log(e);
-      //     },
-      //     1000,
-      //     true
-      //   );
-      //   btn.addEventListener("click", debounceF);
+        let btn = document.querySelector(".btn")
+        console.log(btn);
+        let debounceF = debounce(() => {
+            console.log('123');
+        }, 500, true)
+        btn.addEventListener('click', debounceF)
 
-      let throttleF = throttle(function (e) {
-        console.log(e);
-        console.log(this);
-      }, 1000);
-      btn.addEventListener("click", throttleF);
+        let throttle = throttle2(() => {
+            console.log(111);
+        }, 1000)
+        btn.addEventListener('mousemove', throttle)
     </script>
     <style>
       .btn {
