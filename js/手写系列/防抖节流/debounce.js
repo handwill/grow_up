@@ -1,7 +1,6 @@
 // 第四版
 function debounce(func, wait, immediate = true) {
   var timeout;
-  var firstTime = immediate;
   return function () {
     var context = this;
     var args = arguments;
