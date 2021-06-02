@@ -6,6 +6,14 @@ Function.prototype.call2 = function (context, ...args) {
   return result;
 };
 
+// Function.prototype.call = function (context, ...args) {
+//   context = context || window;
+//   context.fn = this;
+//   let result = context.fn(...args);
+//   delete context.fn;
+//   return result;
+// };
+
 // 测试一下
 var value = 2;
 

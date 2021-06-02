@@ -82,3 +82,18 @@ arr = [1, [2, [3, [4, 5]]], 6];
 console.log(flatten(arr));
 // arr.flat(2);
 // console.log(arr.flat());
+
+var arr2 = [
+  [1, 2, 2],
+  [3, 4, 5, 5],
+  [6, 7, 8, 9, [11, 12, [12, 13, [14]]]],
+  10,
+];
+
+function flatten2(arr) {
+  let flatArr = arr.reduce((pre, item) => {
+    return pre.concat(Array.isArray(item) ? flatten(item) : item);
+  }, []);
+  return [...new Set(flatArr)];
+}
+console.log(flatten2(arr2));
