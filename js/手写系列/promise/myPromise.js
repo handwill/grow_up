@@ -66,3 +66,4 @@ class myPromise {
 }
 
 module.exports = myPromise;
+
