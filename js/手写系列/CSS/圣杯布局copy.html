@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <header class="header">header</header>
+        <div class="container">
+            <div class="main">main</div>
+            <div class="left">left</div>
+            <div class="right">right</div>
+        </div>
+        <footer class="footer">footer</footer>
+    </div>
+</body>
+<style>
+    .wrap {
+        min-width: 600px;
+    }
+
+    .header,
+    .footer {
+        width: 100%;
+        height: 50px;
+        background-color: slategray;
+        border: 1px solid;
+    }
+
+    .container {
+        /* width: 100%; 这里不要设置宽度*/
+        /* BFC */
+        overflow: hidden;
+        /* 空出left right位置 */
+        padding: 0 200px;
+    }
+
+    .main {
+        float: left;
+        width: 100%;
+        background-color: thistle;
+    }
+
+    .left {
+        float: left;
+        width: 200px;
+        background-color: springgreen;
+        margin-left: -100%;
+        position: relative;
+        right: 200px;
+    }
+
+    .right {
+        float: left;
+        width: 200px;
+        background-color: teal;
+        margin-left: -200px;
+        position: relative;
+        left: 200px;
+    }
+</style>
+
+</html>
