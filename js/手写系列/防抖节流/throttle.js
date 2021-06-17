@@ -16,8 +16,8 @@
 //   return _throttle;
 // }
 
-var throttle1 = function (func, delay) {
-  var prev = Date.now();
+var throttle1 = function (func, delay, immediate) {
+  let prev = immediate ? 0 : Date.now();
   return function () {
     var context = this;
     var args = arguments;

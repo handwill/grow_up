@@ -20,3 +20,16 @@ const curry = (fn) => {
 const c_fn = curry(sum);
 const res = c_fn(1, 3)(2)(1);
 console.log(res);
+
+function curry2(fn) {
+  let param = [];
+  const next = (...args) => {
+    param = [...params, ...args];
+    if (param.length < fn.length) {
+      return next;
+    } else {
+      return fn(...params);
+    }
+  };
+  return next;
+}

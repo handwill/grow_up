@@ -10,6 +10,7 @@
 
 <body>
     <script src="./practice.js"> </script>
+    <script src="./throttle.js"></script>
     <script>
         function func1() {
             console.log("debounce", this);
@@ -18,8 +19,8 @@
         function func2() {
             console.log("throttle", this);
         }
-        window.addEventListener('mousemove', debounce(func1, 500, true))
-        window.addEventListener('mousemove', throttle(func2, 500, true))
+        // window.addEventListener('mousemove', debounce(func1, 500, true))
+        window.addEventListener('mousemove', throttle1(func2, 1500, false))
     </script>
     <style>
         body {

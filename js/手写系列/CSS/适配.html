@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>版心布局</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <script>
+        (function flexible(window, document) {
+            var docEl = document.documentElement;
+            var dpr = window.devicePixelRatio || 1;
+
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = 12 * dpr + "px";
+                } else {
+                    document.addEventListener("DOMContentLoaded", setBodyFontSize);
+                }
+            }
+            setBodyFontSize();
+
+            function setRemUnit() {
+                var width = docEl.clientWidth > 750 ? 750 : docEl.clientWidth
+                var rem = width / 10;
+                docEl.style.fontSize = rem + "px";
+            }
+            setRemUnit();
+            window.addEventListener("resize", setRemUnit);
+            window.addEventListener("pageshow", function (e) {
+                if (e.persisted) {
+                    setRemUnit();
+                }
+            });
+            if (dpr >= 2) {
+                var fakeBody = document.createElement("body");
+                var testElement = document.createElement("div");
+                testElement.style.border = ".5px solid transparent";
+                fakeBody.appendChild(testElement);
+                docEl.appendChild(fakeBody);
+                if (testElement.offsetHeight === 1) {
+                    docEl.classList.add("hairlines");
+                }
+                docEl.removeChild(fakeBody);
+            }
+        })(window, document);
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <header>header
+            <div id="title"></div>
+        </header>
+        <main>main</main>
+    </div>
+    <script>
+        window.onload = function () {
+            setFont();
+            window.addEventListener("resize", function () {
+
+                setFont();
+            })
+
+            function setFont() {
+                var div = document.getElementById('title');
+                div.style.fontSize = document.querySelector("html").style.fontSize;
+                div.innerHTML = "html的字体大小为" + document.querySelector("html").style.fontSize;
+            }
+        }
+    </script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: darkcyan;
+        }
+
+        #main {
+            max-width: 750px;
+            height: 100%;
+            margin: 0 auto;
+            background-color: salmon;
+        }
+
+        header {
+            font-size: 1rem;
+        }
+    </style>
+</body>
+
+</html>

@@ -18,8 +18,8 @@ function debounce(func, wait, immediate) {
   };
 }
 
-function throttle(func, wait) {
-  let pre = 0;
+function throttle(func, wait, immediate) {
+  let pre = immediate ? 0 : Date.now();
   return function () {
     let now = Date.now();
     if (now - pre > wait) {
