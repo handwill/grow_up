@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <style>
+        html {
+            font-size: 100px;
+            background-color: antiquewhite;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+            list-style: none
+        }
+
+        li {
+            width: 0.8rem;
+            height: 0.6rem;
+            background-color: saddlebrown;
+            margin: 0.1rem 0;
+            border-radius: 0.1rem;
+            line-height: 0.6rem;
+            text-align: center;
+            font-size: 20px;
+            box-sizing: border-box;
+        }
+
+        .selected {
+            border: 0.04rem solid #fcff00;
+        }
+
+        .center {
+            width: 1.7rem;
+            height: 0.6rem;
+            background-color: forestgreen;
+            margin: 0.1em 0;
+            border-radius: 0.1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul class="wrapper">
+            <template v-for="item in arr">
+                <div class="center" @click="startAnimation" v-if="item == 6"></div>
+                <li :class="{selected: item==selectIndex}" v-else>{{item}}</li>
+            </template>
+        </ul>
+    </div>
+
+    <script>
+        (function (win, doc) {
+            function resizeRoot() {
+                var wWidth =
+                    screen.width > 0 ?
+                    win.innerWidth >= screen.width || win.innerWidth == 0 ?
+                    screen.width :
+                    win.innerWidth :
+                    win.innerWidth,
+                    wFsize;
+                wFsize = ((wWidth > 750 ? 750 : wWidth) / 375) * 100;
+                doc.documentElement.style.fontSize = wFsize + 'px';
+            }
+            resizeRoot();
+            win.addEventListener('resize', resizeRoot, false);
+        })(window, document);
+    </script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                message: 1,
+                selectIndex: 1,
+                arr: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
+                animationArr: ['1', '2', '3', '4', '7', '11', '10', '9', '8', '5']
+            },
+            methods: {
+                startAnimation() {
+                    let startIndex = -1
+                    setInterval(() => {
+                        if (startIndex >= this.animationArr.length - 1) {
+                            startIndex = 0
+                        } else {
+                            startIndex++
+                        }
+                        this.selectIndex = this.animationArr[startIndex]
+                    }, 200)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
