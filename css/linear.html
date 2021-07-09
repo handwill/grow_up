@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0 auto;
+        }
+
+        .wrapper {
+            width: 750px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .box {
+            width: 500px;
+            height: 50px;
+            margin: 20px 0;
+        }
+
+        .box1 {
+            background: linear-gradient(red, green);
+        }
+
+        .box2 {
+            background: linear-gradient(180deg, red, rgb(99, 107, 99));
+        }
+
+        .box3 {
+            background: linear-gradient(to right, red, orange, blue, yellow);
+        }
+
+        .box4 {
+            background: linear-gradient(to right, red 10%, orange 20%, blue 60%, yellow);
+            /* background: linear-gradient(to right, cyan 50%, palegoldenrod 50%); */
+            /* background: linear-gradient(90deg, red 40%, blue 60%); */
+
+            /* background: linear-gradient(90deg, red 40%, blue 60%, pink 80%); */
+        }
+
+        .box5 {
+            /* background: linear-gradient(to right, blue, 20%, pink); */
+            background: linear-gradient(to left,
+                    lime 20%, red 30% 45%, cyan 55% 70%, yellow 80%);
+        }
+
+        .box6 {
+            height: 400px;
+            background:
+                linear-gradient(217deg, rgba(255, 0, 0, .8), transparent 70.71%),
+                linear-gradient(127deg, rgba(0, 255, 0, .8), transparent 70.71%),
+                linear-gradient(336deg, rgba(0, 0, 255, .8), transparent 70.71%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+        <div class="box box4"></div>
+        <div class="box box5"></div>
+        <div class="box box6"></div>
+        <div class="box box7"></div>
+        <div class="box box8"></div>
+    </div>
+</body>
+
+</html>
